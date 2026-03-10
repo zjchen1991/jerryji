@@ -6,7 +6,7 @@
     <title>Jerry Ji — Professional Golfer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,21 +15,63 @@
         }
         
         :root {
-            --primary: #0d1117;
-            --secondary: #161b22;
-            --tertiary: #21262d;
-            --accent: #c9a962;
-            --accent-dim: rgba(201, 169, 98, 0.3);
-            --white: #ffffff;
-            --text: #8b949e;
-            --text-light: #c9d1d9;
+            --black: #0a0a0a;
+            --dark: #141414;
+            --charcoal: #1a1a1a;
+            --gold: #b8860b;
+            --gold-light: #d4a94d;
+            --white: #fafafa;
+            --gray: #666;
+            --gray-light: #999;
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--primary);
-            color: var(--text-light);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+        
+        .nav-name {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.6;
         }
         
         /* Hero */
@@ -39,50 +81,46 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background: 
-                radial-gradient(ellipse at 50% 0%, rgba(201, 169, 98, 0.15) 0%, transparent 50%),
-                var(--primary);
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('photo2.jpg') center/cover no-repeat;
+            filter: grayscale(100%) brightness(0.3);
         }
         
         .hero-content {
+            position: relative;
+            z-index: 1;
             text-align: center;
-            max-width: 600px;
             padding: 40px;
         }
         
-        .hero-avatar {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 60px rgba(201, 169, 98, 0.3);
-            margin-bottom: 30px;
-        }
-        
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 600;
-            color: var(--white);
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(4rem, 12vw, 10rem);
+            font-weight: 400;
             letter-spacing: -0.02em;
-            margin-bottom: 8px;
+            line-height: 0.9;
+            margin-bottom: 30px;
         }
         
         .hero-subtitle {
-            font-size: 0.9rem;
-            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 0.4em;
             text-transform: uppercase;
-            letter-spacing: 0.3em;
-            margin-bottom: 30px;
+            color: var(--gold-light);
         }
         
         /* Stats */
         .stats {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            gap: 80px;
+            padding: 60px 40px;
+            border-bottom: 1px solid var(--charcoal);
         }
         
         .stat {
@@ -90,284 +128,259 @@
         }
         
         .stat-value {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 600;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
             color: var(--white);
         }
         
         .stat-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--text);
-            margin-top: 4px;
+            color: var(--gray-light);
+            margin-top: 8px;
         }
         
         /* Sections */
         section {
-            padding: 100px 40px;
-            max-width: 900px;
+            padding: 120px 50px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
-        .section-header {
-            margin-bottom: 50px;
+        .section-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
         }
         
         .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 500;
-            color: var(--white);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 40px;
-            height: 1px;
-            background: var(--accent);
+            font-family: 'Bodoni Moda', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 60px;
+            line-height: 1.1;
         }
         
         /* About */
-        .about-section {
-            background: var(--secondary);
-        }
-        
         .about-text {
             font-size: 1.1rem;
+            font-weight: 300;
             line-height: 1.8;
-            color: var(--text-light);
+            color: var(--gray-light);
             max-width: 700px;
         }
         
         /* Achievements */
-        .achievements-list {
-            list-style: none;
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
         }
         
-        .achievement-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 24px 0;
-            border-bottom: 1px solid var(--tertiary);
+        .achievement {
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--charcoal);
         }
         
         .achievement-year {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            min-width: 80px;
-        }
-        
-        .achievement-content {
-            flex: 1;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 10px;
         }
         
         .achievement-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--white);
-            margin-bottom: 4px;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 8px;
         }
         
         .achievement-desc {
-            color: var(--text);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 300;
         }
         
         /* Sponsor */
-        .sponsor-section {
-            background: var(--secondary);
+        .sponsor {
+            background: var(--dark);
             text-align: center;
+            padding: 100px 50px;
         }
         
         .sponsor-label {
-            font-size: 0.8rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text);
+            color: var(--gray);
             margin-bottom: 20px;
         }
         
         .sponsor-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--accent);
-            margin-bottom: 30px;
-        }
-        
-        .sponsor-logos {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .sponsor-logos img {
-            height: 60px;
-            object-fit: contain;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        
-        .sponsor-logos img:hover {
-            opacity: 1;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--white);
         }
         
         /* Gallery */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
         }
         
         .gallery-grid img {
             width: 100%;
-            height: 280px;
+            aspect-ratio: 3/4;
             object-fit: cover;
-            border-radius: 4px;
-            transition: transform 0.3s ease;
+            filter: grayscale(30%);
+            transition: all 0.5s ease;
         }
         
         .gallery-grid img:hover {
+            filter: grayscale(0%);
             transform: scale(1.02);
         }
         
         /* Footer */
         footer {
+            padding: 60px 50px;
             text-align: center;
-            padding: 60px 40px;
-            background: var(--secondary);
-            border-top: 1px solid var(--tertiary);
+            border-top: 1px solid var(--charcoal);
         }
         
         footer p {
-            color: var(--text);
-            font-size: 0.85rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .stats { gap: 25px; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            section { padding: 60px 20px; }
-            .hero-avatar { width: 150px; height: 150px; }
-            .achievement-item { flex-direction: column; gap: 8px; }
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+            section { padding: 80px 20px; }
+            .stats { gap: 30px; flex-wrap: wrap; }
+            .achievements-grid { grid-template-columns: 1fr; gap: 40px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-name">Jerry Ji</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    
     <!-- Hero -->
     <div class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content">
-            <img src="photo2.jpg" alt="Jerry Ji" class="hero-avatar">
-            <h1>Jerry Ji</h1>
+            <h1>JERRY JI</h1>
             <p class="hero-subtitle">Professional Golfer</p>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-value">26</div>
-                    <div class="stat-label">Age</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">2024</div>
-                    <div class="stat-label">Dutch Open Champ</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">#7</div>
-                    <div class="stat-label">Race to Dubai</div>
-                </div>
-            </div>
+        </div>
+    </div>
+    
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-value">26</div>
+            <div class="stat-label">Age</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">2024</div>
+            <div class="stat-label">Dutch Open Winner</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">#7</div>
+            <div class="stat-label">Race to Dubai</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">1</div>
+            <div class="stat-label">Hole-in-One</div>
         </div>
     </div>
     
     <!-- About -->
-    <section class="about-section">
-        <div class="section-header">
-            <h2 class="section-title">About</h2>
-        </div>
+    <section id="about">
+        <p class="section-label">About</p>
+        <h2 class="section-title">Competitive Excellence</h2>
         <p class="about-text">
             Jerry Ji is a talented Dutch amateur golfer with a proven track record of success in both national and international competitions. After achieving multiple top placements in the Netherlands U18 rankings, he has continued to compete at the highest amateur level.
         </p>
     </section>
     
     <!-- Achievements -->
-    <section>
-        <div class="section-header">
-            <h2 class="section-title">Career Highlights</h2>
+    <section id="achievements">
+        <p class="section-label">Career</p>
+        <h2 class="section-title">Highlights</h2>
+        <div class="achievements-grid">
+            <div class="achievement">
+                <p class="achievement-year">2024</p>
+                <h3 class="achievement-title">Dutch Golf Open — Winner</h3>
+                <p class="achievement-desc">Champion. Back-to-back top finish with 2nd place in 2025.</p>
+            </div>
+            <div class="achievement">
+                <p class="achievement-year">2025</p>
+                <h3 class="achievement-title">Race to Dubai — 7th Place</h3>
+                <p class="achievement-desc">World's premier amateur golf competition.</p>
+            </div>
+            <div class="achievement">
+                <p class="achievement-year">2025</p>
+                <h3 class="achievement-title">Longest Drive — Winner</h3>
+                <p class="achievement-desc">Proven distance off the tee.</p>
+            </div>
+            <div class="achievement">
+                <p class="achievement-year">2024</p>
+                <h3 class="achievement-title">Hole-in-One</h3>
+                <p class="achievement-desc">Memorable ace achievement.</p>
+            </div>
+            <div class="achievement">
+                <p class="achievement-year">2024</p>
+                <h3 class="achievement-title">NGF B Qualified</h3>
+                <p class="achievement-desc">Dutch Golf Federation certification.</p>
+            </div>
+            <div class="achievement">
+                <p class="achievement-year">2021-2023</p>
+                <h3 class="achievement-title">Top 30 Netherlands U18</h3>
+                <p class="achievement-desc">Multiple years ranked.</p>
+            </div>
         </div>
-        <ul class="achievements-list">
-            <li class="achievement-item">
-                <span class="achievement-year">2024</span>
-                <div class="achievement-content">
-                    <div class="achievement-title">Dutch Golf Open — Winner</div>
-                    <div class="achievement-desc">Champion. Back-to-back top finish with 2nd place in 2025.</div>
-                </div>
-            </li>
-            <li class="achievement-item">
-                <span class="achievement-year">2025</span>
-                <div class="achievement-content">
-                    <div class="achievement-title">Race to Dubai — 7th Place</div>
-                    <div class="achievement-desc">World's premier amateur golf competition.</div>
-                </div>
-            </li>
-            <li class="achievement-item">
-                <span class="achievement-year">2024</span>
-                <div class="achievement-content">
-                    <div class="achievement-title">Hole-in-One</div>
-                    <div class="achievement-desc">Memorable ace achievement.</div>
-                </div>
-            </li>
-            <li class="achievement-item">
-                <span class="achievement-year">2025</span>
-                <div class="achievement-content">
-                    <div class="achievement-title">Longest Drive — Winner</div>
-                    <div class="achievement-desc">Proven distance off the tee.</div>
-                </div>
-            </li>
-            <li class="achievement-item">
-                <span class="achievement-year">2024</span>
-                <div class="achievement-content">
-                    <div class="achievement-title">NGF B Qualified</div>
-                    <div class="achievement-desc">Dutch Golf Federation certification.</div>
-                </div>
-            </li>
-        </ul>
     </section>
     
     <!-- Sponsor -->
-    <section class="sponsor-section">
-        <div class="section-header" style="text-align: center;">
-            <h2 class="section-title">Proudly Supported By</h2>
-        </div>
+    <div class="sponsor" id="contact">
+        <p class="sponsor-label">Supported By</p>
         <p class="sponsor-name">Stichting Golf Team Orange</p>
-        <div class="sponsor-logos">
-            <img src="logo1.jpg" alt="Sponsor">
-            <img src="logo2.jpg" alt="Sponsor">
-        </div>
-    </section>
+    </div>
     
     <!-- Gallery -->
-    <section>
-        <div class="section-header">
-            <h2 class="section-title">Gallery</h2>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 200px); gap: 8px;">
-            <img src="photo1.jpg" alt="Jerry Ji" style="grid-column: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; transition: all 0.4s ease;">
-            <img src="photo2.jpg" alt="Jerry Ji" style="grid-column: span 1; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; transition: all 0.4s ease;">
-            <img src="gallery1.jpg" alt="Jerry Ji" style="grid-column: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; transition: all 0.4s ease;">
-            <img src="photo3.jpg" alt="Jerry Ji" style="grid-column: span 1; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; transition: all 0.4s ease;">
-            <img src="gallery2.jpg" alt="Jerry Ji" style="grid-column: span 1; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; transition: all 0.4s ease;">
-            <img src="gallery3.jpg" alt="Jerry Ji" style="grid-column: span 2; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; transition: all 0.4s ease;">
-            <img src="gallery4.jpg" alt="Jerry Ji" style="grid-column: span 1; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; transition: all 0.4s ease;">
-            <img src="gallery5.jpg" alt="Jerry Ji" style="grid-column: span 1; width: 100%; height: 100%; object-fit: cover; border-radius: 2px; transition: all 0.4s ease;">
+    <section id="gallery">
+        <p class="section-label">Gallery</p>
+        <h2 class="section-title">In Action</h2>
+        <div class="gallery-grid">
+            <img src="photo1.jpg" alt="Jerry Ji">
+            <img src="photo2.jpg" alt="Jerry Ji">
+            <img src="photo3.jpg" alt="Jerry Ji">
+            <img src="photo4.jpg" alt="Jerry Ji">
+            <img src="gallery1.jpg" alt="Jerry Ji">
+            <img src="gallery2.jpg" alt="Jerry Ji">
+            <img src="gallery3.jpg" alt="Jerry Ji">
+            <img src="gallery4.jpg" alt="Jerry Ji">
         </div>
     </section>
     
