@@ -6,31 +6,33 @@
     <title>Jerry Ji — Professional Golfer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #252525;
+            --tertiary: #333;
+            --accent: #c9a962;
+            --accent-dark: #a08442;
+            --white: #fff;
+            --off-white: #f5f5f5;
+            --light-gray: #e8e8e8;
+            --text: #333;
+            --text-light: #666;
+            --text-lighter: #888;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        :root {
-            --black: #0a0a0a;
-            --dark: #141414;
-            --charcoal: #1a1a1a;
-            --gold: #b8860b;
-            --gold-light: #d4a94d;
-            --white: #fafafa;
-            --gray: #666;
-            --gray-light: #999;
-        }
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--off-white);
+            color: var(--text);
+            line-height: 1.6;
         }
         
         /* Navigation */
@@ -39,191 +41,243 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 30px 50px;
+            padding: 25px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            mix-blend-mode: difference;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
         }
         
         .nav-name {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
             font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 0.05em;
         }
         
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 45px;
         }
         
         .nav-links a {
-            color: var(--white);
+            color: var(--text-light);
             text-decoration: none;
             font-size: 0.75rem;
-            letter-spacing: 0.15em;
+            font-weight: 500;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            font-weight: 400;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
         }
         
         .nav-links a:hover {
-            opacity: 0.6;
+            color: var(--accent-dark);
         }
         
         /* Hero */
         .hero {
             min-height: 100vh;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
-            justify-content: center;
+        }
+        
+        .hero-image {
             position: relative;
+            height: 100vh;
             overflow: hidden;
         }
         
-        .hero-bg {
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-image::after {
+            content: '';
             position: absolute;
             inset: 0;
-            background: url('photo2.jpg') center/cover no-repeat;
-            filter: grayscale(100%) brightness(0.3);
+            background: linear-gradient(to right, transparent 50%, rgba(26,26,26,0.3) 100%);
         }
         
         .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 40px;
+            padding: 80px;
+            background: var(--white);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .hero-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            margin-bottom: 20px;
         }
         
         .hero h1 {
-            font-family: 'Bodoni Moda', serif;
-            font-size: clamp(4rem, 12vw, 10rem);
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            line-height: 0.9;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 500;
+            color: var(--primary);
+            line-height: 1;
             margin-bottom: 30px;
         }
         
         .hero-subtitle {
-            font-size: 0.8rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--gold-light);
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 400px;
         }
         
-        /* Stats */
-        .stats {
+        .hero-stats {
             display: flex;
-            justify-content: center;
-            gap: 80px;
-            padding: 60px 40px;
-            border-bottom: 1px solid var(--charcoal);
+            gap: 50px;
         }
         
-        .stat {
-            text-align: center;
+        .hero-stat {
+            text-align: left;
         }
         
-        .stat-value {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 2.5rem;
-            font-weight: 400;
-            color: var(--white);
+        .hero-stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: var(--primary);
         }
         
-        .stat-label {
+        .hero-stat-label {
             font-size: 0.65rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--gray-light);
-            margin-top: 8px;
+            color: var(--text-lighter);
+            margin-top: 5px;
         }
         
         /* Sections */
         section {
-            padding: 120px 50px;
-            max-width: 1200px;
+            padding: 120px 60px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 60px;
+        }
+        
         .section-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.3em;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 20px;
+            color: var(--accent-dark);
+            margin-bottom: 10px;
         }
         
         .section-title {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 60px;
-            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color: var(--primary);
         }
         
         /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
         .about-text {
-            font-size: 1.1rem;
-            font-weight: 300;
-            line-height: 1.8;
-            color: var(--gray-light);
-            max-width: 700px;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-light);
+        }
+        
+        .about-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--primary);
+            border-left: 3px solid var(--accent);
+            padding-left: 30px;
+            line-height: 1.6;
         }
         
         /* Achievements */
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
+        .achievements-section {
+            background: var(--white);
         }
         
-        .achievement {
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--charcoal);
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .achievement-card {
+            padding: 40px;
+            background: var(--off-white);
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
         
         .achievement-year {
             font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            color: var(--gold);
-            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
         }
         
         .achievement-title {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
         
         .achievement-desc {
             font-size: 0.9rem;
-            color: var(--gray);
-            font-weight: 300;
+            color: var(--text-lighter);
         }
         
         /* Sponsor */
-        .sponsor {
-            background: var(--dark);
+        .sponsor-section {
+            background: var(--primary);
             text-align: center;
-            padding: 100px 50px;
+            padding: 80px 60px;
         }
         
         .sponsor-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.3em;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--gray);
-            margin-bottom: 20px;
+            color: var(--text-lighter);
+            margin-bottom: 15px;
         }
         
         .sponsor-name {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
             font-weight: 400;
             color: var(--white);
         }
@@ -232,45 +286,51 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
+            gap: 8px;
         }
         
         .gallery-grid img {
             width: 100%;
-            aspect-ratio: 3/4;
+            aspect-ratio: 1;
             object-fit: cover;
-            filter: grayscale(30%);
-            transition: all 0.5s ease;
+            transition: transform 0.4s ease;
         }
         
         .gallery-grid img:hover {
-            filter: grayscale(0%);
-            transform: scale(1.02);
+            transform: scale(1.05);
         }
         
         /* Footer */
         footer {
-            padding: 60px 50px;
+            background: var(--primary);
+            padding: 60px;
             text-align: center;
-            border-top: 1px solid var(--charcoal);
         }
         
         footer p {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--gray);
+            color: var(--text-lighter);
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
-            nav { padding: 20px; }
-            .nav-links { display: none; }
-            section { padding: 80px 20px; }
-            .stats { gap: 30px; flex-wrap: wrap; }
-            .achievements-grid { grid-template-columns: 1fr; gap: 40px; }
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-image { height: 60vh; }
+            .hero-content { height: auto; padding: 60px 40px; }
+            .about-content { grid-template-columns: 1fr; gap: 40px; }
+            .achievements-grid { grid-template-columns: repeat(2, 1fr); }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero h1 { font-size: 3.5rem; }
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 20px 30px; }
+            .nav-links { display: none; }
+            section { padding: 80px 30px; }
+            .hero-stats { gap: 30px; flex-wrap: wrap; }
+            .achievements-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2rem; }
         }
     </style>
 </head>
@@ -280,7 +340,7 @@
         <div class="nav-name">Jerry Ji</div>
         <div class="nav-links">
             <a href="#about">About</a>
-            <a href="#achievements">Achievements</a>
+            <a href="#achievements">Career</a>
             <a href="#gallery">Gallery</a>
             <a href="#contact">Contact</a>
         </div>
@@ -288,90 +348,104 @@
     
     <!-- Hero -->
     <div class="hero">
-        <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>JERRY JI</h1>
-            <p class="hero-subtitle">Professional Golfer</p>
+            <p class="hero-label">Professional Golfer</p>
+            <h1>Jerry Ji</h1>
+            <p class="hero-subtitle">Rising Dutch talent with a proven track record in national and international amateur competitions.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">26</div>
+                    <div class="hero-stat-label">Age</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">#7</div>
+                    <div class="hero-stat-label">Race to Dubai</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">2024</div>
+                    <div class="hero-stat-label">Dutch Open Champ</div>
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <!-- Stats -->
-    <div class="stats">
-        <div class="stat">
-            <div class="stat-value">26</div>
-            <div class="stat-label">Age</div>
-        </div>
-        <div class="stat">
-            <div class="stat-value">2024</div>
-            <div class="stat-label">Dutch Open Winner</div>
-        </div>
-        <div class="stat">
-            <div class="stat-value">#7</div>
-            <div class="stat-label">Race to Dubai</div>
-        </div>
-        <div class="stat">
-            <div class="stat-value">1</div>
-            <div class="stat-label">Hole-in-One</div>
+        <div class="hero-image">
+            <img src="photo2.jpg" alt="Jerry Ji">
         </div>
     </div>
     
     <!-- About -->
     <section id="about">
-        <p class="section-label">About</p>
-        <h2 class="section-title">Competitive Excellence</h2>
-        <p class="about-text">
-            Jerry Ji is a talented Dutch amateur golfer with a proven track record of success in both national and international competitions. After achieving multiple top placements in the Netherlands U18 rankings, he has continued to compete at the highest amateur level.
-        </p>
+        <div class="section-header">
+            <div>
+                <p class="section-label">About</p>
+                <h2 class="section-title">The Player</h2>
+            </div>
+        </div>
+        <div class="about-content">
+            <p class="about-text">
+                Jerry Ji is a talented Dutch amateur golfer with a proven track record of success in both national and international competitions. After achieving multiple top placements in the Netherlands U18 rankings, he has continued to compete at the highest amateur level. His dedication to the sport and continuous improvement make him one of the most promising young golfers from the Netherlands.
+            </p>
+            <p class="about-quote">
+                "Golf is a journey of constant learning. Every tournament is a chance to grow."
+            </p>
+        </div>
     </section>
     
     <!-- Achievements -->
-    <section id="achievements">
-        <p class="section-label">Career</p>
-        <h2 class="section-title">Highlights</h2>
+    <section class="achievements-section" id="achievements">
+        <div class="section-header">
+            <div>
+                <p class="section-label">Career</p>
+                <h2 class="section-title">Highlights</h2>
+            </div>
+        </div>
         <div class="achievements-grid">
-            <div class="achievement">
+            <div class="achievement-card">
                 <p class="achievement-year">2024</p>
-                <h3 class="achievement-title">Dutch Golf Open — Winner</h3>
+                <h3 class="achievement-title">Dutch Golf Open</h3>
                 <p class="achievement-desc">Champion. Back-to-back top finish with 2nd place in 2025.</p>
             </div>
-            <div class="achievement">
+            <div class="achievement-card">
                 <p class="achievement-year">2025</p>
-                <h3 class="achievement-title">Race to Dubai — 7th Place</h3>
-                <p class="achievement-desc">World's premier amateur golf competition.</p>
+                <h3 class="achievement-title">Race to Dubai</h3>
+                <p class="achievement-desc">7th Place — World's premier amateur golf competition.</p>
             </div>
-            <div class="achievement">
+            <div class="achievement-card">
                 <p class="achievement-year">2025</p>
-                <h3 class="achievement-title">Longest Drive — Winner</h3>
-                <p class="achievement-desc">Proven distance off the tee.</p>
+                <h3 class="achievement-title">Longest Drive</h3>
+                <p class="achievement-desc">Winner — Proven distance off the tee.</p>
             </div>
-            <div class="achievement">
+            <div class="achievement-card">
                 <p class="achievement-year">2024</p>
                 <h3 class="achievement-title">Hole-in-One</h3>
                 <p class="achievement-desc">Memorable ace achievement.</p>
             </div>
-            <div class="achievement">
+            <div class="achievement-card">
                 <p class="achievement-year">2024</p>
                 <h3 class="achievement-title">NGF B Qualified</h3>
                 <p class="achievement-desc">Dutch Golf Federation certification.</p>
             </div>
-            <div class="achievement">
+            <div class="achievement-card">
                 <p class="achievement-year">2021-2023</p>
                 <h3 class="achievement-title">Top 30 Netherlands U18</h3>
-                <p class="achievement-desc">Multiple years ranked.</p>
+                <p class="achievement-desc">Multiple years ranked in the national junior standings.</p>
             </div>
         </div>
     </section>
     
     <!-- Sponsor -->
-    <div class="sponsor" id="contact">
+    <div class="sponsor-section" id="contact">
         <p class="sponsor-label">Supported By</p>
         <p class="sponsor-name">Stichting Golf Team Orange</p>
     </div>
     
     <!-- Gallery -->
     <section id="gallery">
-        <p class="section-label">Gallery</p>
-        <h2 class="section-title">In Action</h2>
+        <div class="section-header">
+            <div>
+                <p class="section-label">Gallery</p>
+                <h2 class="section-title">In Action</h2>
+            </div>
+        </div>
         <div class="gallery-grid">
             <img src="photo1.jpg" alt="Jerry Ji">
             <img src="photo2.jpg" alt="Jerry Ji">
